@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/nickxgrom/moon-code-frontend#readme",
   "dependencies": {
+    "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2",
     "connect-history-api-fallback": "^1.6.0",
     "css-loader": "^5.2.3",
     "express": "^4.17.1",
