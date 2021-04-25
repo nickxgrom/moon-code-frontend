@@ -10,6 +10,8 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    body {
+        background-color: #343A40 !important;
+    }
 </style>

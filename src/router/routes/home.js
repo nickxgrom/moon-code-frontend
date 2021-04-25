@@ -1,7 +1,7 @@
 import Home from "../../components/pages/Home.vue";
 
 const route =  {
-    nam: "home",
+    name: "home",
     path: "/",
     component: Home,
 }
