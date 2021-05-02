@@ -13,7 +13,13 @@
                         <b-form-input
                             :placeholder="field.placeholder"
                             :type="field.type"
+                            v-model="field.value"
+                            :state="field.value ? field.rule.test(field.value) : null"
+
                         />
+                        <b-form-invalid-feedback>
+                            {{ field.errorMessage }}
+                        </b-form-invalid-feedback>
                     </b-form-group>
 
                     <div class="text-center">
@@ -35,40 +41,52 @@
             return {
                 form: [
                     {
+                        value: "",
                         label: "Фамилия",
                         placeholder: "Введите фамилию",
                         type: "text",
-                        rule: /\./,
+                        rule: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/,
+                        errorMessage: "Введите корректную фамилию"
                     },
                     {
+                        value: "",
                         label: "Имя",
                         placeholder: "Введите имя",
                         type: "text",
-                        rule: /\./,
+                        rule: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/,
+                        errorMessage: "Введите корректное имя"
                     },
                     {
+                        value: "",
                         label: "Отчество",
                         placeholder: "Введите отчество",
                         type: "text",
-                        rule: /\./,
+                        rule: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/,
+                        errorMessage: "Введите корректное отчество"
                     },
                     {
+                        value: "",
                         label: "Логин",
                         placeholder: "Придумайте логин",
                         type: "text",
-                        rule: /\./,
+                        rule: /^[a-z]+([-_]?[a-z0-9]+){0,2}$/i,
+                        errorMessage: "Введите корректный логин"
                     },
                     {
+                        value: "",
                         label: "Пароль",
                         placeholder: "Придумайте пароль",
                         type: "password",
-                        rule: /\./,
+                        rule: /^(?=.*\d)(?=.*[A-Z]).{8,}$/,
+                        errorMessage: "Введите корректный пароль"
                     },
                     {
+                        value: "",
                         label: "Повторите пароль",
                         placeholder: "Повторите пароль",
                         type: "password",
-                        rule: /\./,
+                        rule: /^(?=.*\d)(?=.*[A-Z]).{8,}$/,
+                        errorMessage: "Повторите пароль"
                     },
                 ]
             }
