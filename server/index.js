@@ -14,5 +14,5 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler))
 
 app.listen(PORT, () => {
-    console.log(`Server listening port ${PORT}`)
+    console.log(`Server listening http://localhost:${PORT}`)
 })
