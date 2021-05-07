@@ -4,13 +4,19 @@
             app
             class="indigo lighten-4"
             flat
-            height="200"
+            height="250"
         >
             <v-row class="d-flex flex-column">
                 <v-col>
-                    <v-container>
-                        <h3 id="sub-title">MoonCode</h3>
-                        <span id="main-title">Система автоматизированного тестирования задач</span>
+                    <v-container class="fill-height">
+                        <v-col>
+                            <h3 id="sub-title">MoonCode</h3>
+                            <span id="main-title">Система автоматизированного тестирования задач</span>
+                        </v-col>
+
+                        <v-spacer></v-spacer>
+
+                        <span class="">{{ date | date('datetime') }}</span>
                     </v-container>
                 </v-col>
                 <v-col>
@@ -106,8 +112,14 @@ export default {
             right: null,
             drawer: true,
             isDarkTheme: false,
+            date: new Date(),
+            interval: null,
         }
-
+    },
+    mounted() {
+        this.interval = setInterval(() => {
+            this.date = new Date()
+        }, 1000)
     },
 }
 </script>

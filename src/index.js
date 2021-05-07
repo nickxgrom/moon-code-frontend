@@ -5,7 +5,9 @@ import BootstrapVue from "bootstrap-vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vuetify from "./plugins/vuetify";
+import dateFilter from "./filters/date.filter.js";
 
+Vue.filter('date', dateFilter)
 Vue.use(BootstrapVue)
 
 new Vue({
