@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import Header from "../components/appbar/Header.vue";
-import Sidebar from "../components/appbar/Sidebar.vue";
+import Header from "../components/nav/Header.vue";
+import Sidebar from "../components/nav/Sidebar.vue";
 export default {
     name: "MainLayout",
     components: {

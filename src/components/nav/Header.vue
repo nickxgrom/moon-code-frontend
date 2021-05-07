@@ -25,6 +25,32 @@
 
                 <v-spacer></v-spacer>
 
+                <v-menu offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                            color="mr-5"
+                            v-bind="attrs"
+                            v-on="on"
+                        >
+                            <v-icon>mdi-translate</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list flat outlined>
+                        <v-subheader class="mb-4">Переводы</v-subheader>
+                        <v-list-item-group
+                            v-model="lang"
+                        >
+                            <v-list-item
+                                v-for="(item) in items"
+                                :key="item.value"
+                                :value="item.value"
+                                selectable
+                            >
+                                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                            </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
+                </v-menu>
                 <v-btn
                     @click="isDarkTheme = !isDarkTheme"
                 >
@@ -43,6 +69,12 @@ export default {
         date: new Date(),
         interval: null,
         isDarkTheme: false,
+
+        lang: 'ru',
+        items: [
+            { title: 'Русский', value: 'ru' },
+            { title: 'English', value: 'en' },
+        ],
     }),
     mounted() {
         this.interval = setInterval(() => {
