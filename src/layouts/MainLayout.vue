@@ -6,82 +6,15 @@
             flat
             height="250"
         >
-            <v-row class="d-flex flex-column">
-                <v-col>
-                    <v-container class="fill-height">
-                        <v-col>
-                            <h3 id="sub-title">MoonCode</h3>
-                            <span id="main-title">Система автоматизированного тестирования задач</span>
-                        </v-col>
-
-                        <v-spacer></v-spacer>
-
-                        <span class="">{{ date | date('datetime') }}</span>
-                    </v-container>
-                </v-col>
-                <v-col>
-                    <v-container class="py-0 fill-height">
-                        <router-link to="/profile">
-                            <v-avatar
-                                class="mr-2"
-                                color="grey darken-1"
-                                size="64"
-                            ></v-avatar>
-                            Имя пользователя
-                        </router-link>
-
-                        <v-spacer></v-spacer>
-
-                        <v-btn
-                            @click="isDarkTheme = !isDarkTheme"
-                        >
-                            <v-icon v-text="isDarkTheme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
-                        </v-btn>
-                    </v-container>
-                </v-col>
-
-            </v-row>
-
+            <Header/>
         </v-app-bar>
 
         <v-main app class="grey lighten-3">
             <v-container>
                 <v-row>
                     <v-col cols="2">
-                        <v-sheet rounded="lg">
-                            <v-list color="transparent">
-                                <v-list-item
-                                    v-for="item in items"
-                                    :key="item.link"
-                                    link
-                                    :to="item.link"
-                                >
-                                    <v-list-item-icon>
-                                        <v-icon v-text="item.icon"></v-icon>
-                                    </v-list-item-icon>
-                                    <v-list-item-content>
-                                        <v-list-item-title>
-                                            {{ item.title }}
-                                        </v-list-item-title>
-                                    </v-list-item-content>
-                                </v-list-item>
-
-                                <v-divider class="my-2"></v-divider>
-
-                                <v-list-item
-                                    link
-                                    color="grey lighten-4"
-                                >
-                                    <v-list-item-content>
-                                        <v-list-item-title>
-                                            Refresh
-                                        </v-list-item-title>
-                                    </v-list-item-content>
-                                </v-list-item>
-                            </v-list>
-                        </v-sheet>
+                        <Sidebar/>
                     </v-col>
-
                     <v-col>
                         <v-sheet
                             min-height="70vh"
@@ -99,40 +32,15 @@
 </template>
 
 <script>
+import Header from "../components/appbar/Header.vue";
+import Sidebar from "../components/appbar/Sidebar.vue";
 export default {
     name: "MainLayout",
-    data() {
-        return {
-            items: [
-                {title: 'Все задачи', icon: 'mdi-clipboard-list-outline', link: '/'},
-                {title: 'Мои задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
-                {title: 'Закладки', icon: 'mdi-playlist-star', link: '/favorites'},
-                {title: 'Мои посылки', icon: 'mdi-view-list', link: '/parcels'},
-            ],
-            right: null,
-            drawer: true,
-            isDarkTheme: false,
-            date: new Date(),
-            interval: null,
-        }
-    },
-    mounted() {
-        this.interval = setInterval(() => {
-            this.date = new Date()
-        }, 1000)
+    components: {
+        Header,
+        Sidebar
     },
 }
 </script>
 
-<style>
-#sub-title {
-    margin: 0;
-    color: #263238;
-}
-
-#main-title {
-    margin: 0;
-    padding: 0;
-    color: #37474F;
-}
-</style>
+<style></style>
