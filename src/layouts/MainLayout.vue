@@ -2,7 +2,7 @@
     <v-app id="inspire">
         <v-app-bar
             app
-            color="#C5CAE9"
+            class="indigo lighten-4"
             flat
             height="200"
         >
@@ -125,12 +125,12 @@ export default {
 <style>
 #sub-title {
     margin: 0;
-    color: darkcyan;
+    color: #263238;
 }
 
 #main-title {
     margin: 0;
     padding: 0;
-    color: cadetblue;
+    color: #37474F;
 }
 </style>
