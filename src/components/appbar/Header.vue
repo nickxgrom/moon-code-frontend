@@ -53,5 +53,14 @@ export default {
 </script>
 
 <style scoped>
+#sub-title {
+    margin: 0;
+    color: #263238;
+}
 
+#main-title {
+    margin: 0;
+    padding: 0;
+    color: #37474F;
+}
 </style>
