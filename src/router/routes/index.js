@@ -36,6 +36,12 @@ const routes = [
         meta: {layout: 'main'},
         component: () => import('../../views/MyTasks.vue'),
     },
+    {
+        path: "/profile",
+        name: "profile",
+        meta: {layout: 'main'},
+        component: () => import('../../views/Profile.vue'),
+    },
 ]
 
 export default routes
