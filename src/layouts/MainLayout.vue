@@ -25,6 +25,7 @@
                         v-for="item in items"
                         :key="item.title"
                         link
+                        :to="item.link"
                     >
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
@@ -62,9 +63,10 @@ export default {
     data () {
         return {
             items: [
-                { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-                { title: 'Photos', icon: 'mdi-image' },
-                { title: 'About', icon: 'mdi-help-box' },
+                { title: 'Все задачи', icon: 'mdi-view-dashboard', link: '/' },
+                { title: 'Мои задачи', icon: 'mdi-image', link: '/my-tasks' },
+                { title: 'Закладки', icon: 'mdi-help-box', link: '/favorites' },
+                { title: 'Мои посылки', icon: 'mdi-help-box', link: '/parcels' },
             ],
             right: null,
             drawer: true,

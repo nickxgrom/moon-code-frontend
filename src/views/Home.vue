@@ -1,6 +1,6 @@
 <template>
     <div>
-       <h1>Welcome, to Home page</h1>
+       <h1>Список всех задач</h1>
     </div>
 </template>
 

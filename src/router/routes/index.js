@@ -18,6 +18,24 @@ const routes = [
         meta: {layout: 'empty'},
         component: () => import('../../views/Register.vue'),
     },
+    {
+        path: "/favorites",
+        name: "favorites",
+        meta: {layout: 'main'},
+        component: () => import('../../views/MyFavoritesTasks.vue'),
+    },
+    {
+        path: "/parcels",
+        name: "parcels",
+        meta: {layout: 'main'},
+        component: () => import('../../views/MyParcels.vue'),
+    },
+    {
+        path: "/my-tasks",
+        name: "my-tasks",
+        meta: {layout: 'main'},
+        component: () => import('../../views/MyTasks.vue'),
+    },
 ]
 
 export default routes
