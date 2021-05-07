@@ -17,32 +17,20 @@
                     <v-container class="py-0 fill-height">
                         <router-link to="/profile">
                             <v-avatar
-                                class="mr-10"
+                                class="mr-2"
                                 color="grey darken-1"
-                                size="32"
+                                size="64"
                             ></v-avatar>
+                            Имя пользователя
                         </router-link>
-
-                        <v-btn
-                            v-for="item in items"
-                            :key="item.link"
-                            text
-                            :to="item.link"
-                        >
-                            {{ item.title }}
-                        </v-btn>
 
                         <v-spacer></v-spacer>
 
-                        <v-responsive max-width="260">
-                            <v-text-field
-                                dense
-                                flat
-                                hide-details
-                                rounded
-                                solo-inverted
-                            ></v-text-field>
-                        </v-responsive>
+                        <v-btn
+                            @click="isDarkTheme = !isDarkTheme"
+                        >
+                            <v-icon v-text="isDarkTheme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
+                        </v-btn>
                     </v-container>
                 </v-col>
 
@@ -110,14 +98,16 @@ export default {
     data() {
         return {
             items: [
-                {title: 'Все задачи', icon: 'mdi-view-dashboard', link: '/'},
-                {title: 'Мои задачи', icon: 'mdi-image', link: '/my-tasks'},
-                {title: 'Закладки', icon: 'mdi-help-box', link: '/favorites'},
-                {title: 'Мои посылки', icon: 'mdi-help-box', link: '/parcels'},
+                {title: 'Все задачи', icon: 'mdi-clipboard-list-outline', link: '/'},
+                {title: 'Мои задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
+                {title: 'Закладки', icon: 'mdi-playlist-star', link: '/favorites'},
+                {title: 'Мои посылки', icon: 'mdi-view-list', link: '/parcels'},
             ],
             right: null,
             drawer: true,
+            isDarkTheme: false,
         }
+
     },
 }
 </script>
