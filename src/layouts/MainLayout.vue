@@ -19,8 +19,10 @@
                         <v-sheet
                             min-height="70vh"
                             rounded="lg"
+                            class="p-5"
                         >
-                            <router-view class="p-5"></router-view>
+                            <h3>{{ title }}</h3>
+                            <router-view></router-view>
                         </v-sheet>
                     </v-col>
                 </v-row>
@@ -40,6 +42,11 @@ export default {
         Header,
         Sidebar
     },
+    computed: {
+        title() {
+            return this.$route.meta.title
+        }
+    }
 }
 </script>
 

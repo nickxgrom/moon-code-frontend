@@ -3,7 +3,7 @@ const routes = [
     {
         name: "home",
         path: "/",
-        meta: {layout: 'main'},
+        meta: {layout: 'main', title: 'Задачи'},
         component: () => import('../../views/Home.vue'),
     },
     {
@@ -21,25 +21,25 @@ const routes = [
     {
         path: "/favorites",
         name: "favorites",
-        meta: {layout: 'main'},
+        meta: {layout: 'main', title: 'Закладки'},
         component: () => import('../../views/MyFavoritesTasks.vue'),
     },
     {
         path: "/parcels",
         name: "parcels",
-        meta: {layout: 'main'},
+        meta: {layout: 'main', title: 'Мои посылки'},
         component: () => import('../../views/MyParcels.vue'),
     },
     {
         path: "/my-tasks",
         name: "my-tasks",
-        meta: {layout: 'main'},
+        meta: {layout: 'main', title: 'Мои задачи'},
         component: () => import('../../views/MyTasks.vue'),
     },
     {
         path: "/profile",
         name: "profile",
-        meta: {layout: 'main'},
+        meta: {layout: 'main', title: 'Профиль'},
         component: () => import('../../views/Profile.vue'),
     },
 ]
