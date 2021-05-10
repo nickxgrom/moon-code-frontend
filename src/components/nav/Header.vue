@@ -39,6 +39,7 @@
                         <v-subheader class="mb-4">Переводы</v-subheader>
                         <v-list-item-group
                             v-model="lang"
+                            @change="changeLang"
                         >
                             <v-list-item
                                 v-for="(item) in items"
@@ -52,7 +53,7 @@
                     </v-list>
                 </v-menu>
                 <v-btn
-                    @click="isDarkTheme = !isDarkTheme"
+                    @click="changeTheme"
                 >
                     <v-icon v-text="isDarkTheme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
                 </v-btn>
@@ -81,6 +82,16 @@ export default {
             this.date = new Date()
         }, 1000)
     },
+    methods: {
+        changeTheme() {
+            this.$store.commit('setDarkTheme', !this.isDarkTheme)
+            this.isDarkTheme = this.$store.getters.isDarkTheme
+        },
+        changeLang() {
+            this.$store.commit('setLang', this.lang)
+            this.lang = this.$store.getters.lang
+        }
+    }
 }
 </script>
 

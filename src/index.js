@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import vuetify from "./plugins/vuetify";
 import dateFilter from "./filters/date.filter.js";
+import store from "./store/index.js"
+
 
 Vue.filter('date', dateFilter)
 Vue.use(BootstrapVue)
@@ -17,7 +19,8 @@ new Vue({
     components: {
         app,
     },
-    router
+    router,
+    store
 })
 
 window.getSelection().addRange(new Range())
