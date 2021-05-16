@@ -1,4 +1,3 @@
-
 const routes = [
     {
         name: "home",
@@ -13,10 +12,10 @@ const routes = [
         component: () => import('../../views/Login.vue'),
     },
     {
-        path: "/register",
-        name: "register",
-        meta: {layout: 'empty'},
-        component: () => import('../../views/Register.vue'),
+        path: "/signup",
+        name: "signup",
+        meta: {layout: 'no'},
+        component: () => import('../../views/Signup.vue'),
     },
     {
         path: "/favorites",
