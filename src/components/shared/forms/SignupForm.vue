@@ -16,7 +16,12 @@
 
         <v-btn color="teal lighten-1">Регистрация</v-btn>
         <br/>или<br/>
-        <v-btn color="light-blue darken-3">Вход</v-btn>
+        <v-btn
+            color="light-blue darken-3"
+            @click="$router.push('/signin')"
+        >
+            Вход
+        </v-btn>
     </form-wrapper>
 </template>
 

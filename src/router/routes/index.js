@@ -18,6 +18,12 @@ const routes = [
         component: () => import('../../views/Signup.vue'),
     },
     {
+        path: "/signin",
+        name: "signin",
+        meta: {layout: 'no'},
+        component: () => import('../../views/Signin.vue'),
+    },
+    {
         path: "/favorites",
         name: "favorites",
         meta: {layout: 'main'},
