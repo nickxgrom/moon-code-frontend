@@ -1,10 +1,10 @@
 <template>
-    <h1>Register</h1>
+    <router-view></router-view>
 </template>
 
 <script>
 export default {
-name: "Register"
+    name: "NoLayout"
 }
 </script>
 

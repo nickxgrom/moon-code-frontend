@@ -7,16 +7,17 @@
 </template>
 
 <script>
-import EmptyLayout from "./layouts/EmptyLayout.vue";
 import MainLayout from "./layouts/MainLayout.vue";
+import NoLayout from "./layouts/NoLayout.vue";
 export default {
     name: "app",
     components: {
-        EmptyLayout, MainLayout
+        MainLayout,
+        NoLayout,
     },
     computed: {
         layout() {
-            return (this.$route.meta.layout || 'empty') + '-layout'
+            return (this.$route.meta.layout || 'no') + '-layout'
         }
     }
 }
