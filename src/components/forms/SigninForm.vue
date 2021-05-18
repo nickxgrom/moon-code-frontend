@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import FormWrapper from "./FormWrapper.vue";
+import FormWrapper from "../shared/FormWrapper.vue";
 export default {
     name: "SignupForm",
     components: {

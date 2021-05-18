@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import SignupForm from "../components/shared/forms/SignupForm.vue";
+    import SignupForm from "../components/forms/SignupForm.vue";
     export default {
         name: "Signup",
         components: {
