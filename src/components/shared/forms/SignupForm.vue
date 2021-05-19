@@ -15,21 +15,24 @@
 
         </v-text-field>
 
-        <v-btn
-            color="mc-accept"
-            @click="submit"
-            depressed
-        >
-            Зарегистрироваться
-        </v-btn>
-        <br/>или<br/>
-        <v-btn
-            color="light-blue darken-3"
-            @click="$router.push('/signin')"
-            depressed
-        >
-            Вход
-        </v-btn>
+        <div class="my-3">
+            <v-btn
+                class="mb-3"
+                color="mc-accept"
+                @click="submit"
+                depressed
+            >
+                Зарегистрироваться
+            </v-btn>
+            <br/>Есть аккаунт?
+            <v-btn
+                color="light-blue"
+                @click="$router.push('/signin')"
+                plain
+            >
+                Вход
+            </v-btn>
+        </div>
     </form-wrapper>
 </template>
 

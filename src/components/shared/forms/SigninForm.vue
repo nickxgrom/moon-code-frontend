@@ -12,18 +12,23 @@
             :rules="field.rules"
         />
 
-        <v-btn
-            color="light-blue darken-3"
-        >
-            Вход
-        </v-btn>
-        <br/>или<br/>
-        <v-btn
-            color="teal lighten-1"
-            @click="$router.push('/signup')"
-        >
-            Регистрация
-        </v-btn>
+        <div class="my-3">
+            <v-btn
+                class="mb-3"
+                color="light-blue darken-3"
+            >
+                Вход
+            </v-btn>
+            <br/>Нет аккаунта?
+            <v-btn
+                color="teal lighten-1"
+                class="pa-2"
+                @click="$router.push('/signup')"
+                plain
+            >
+                Регистрация
+            </v-btn>
+        </div>
 
     </form-wrapper>
 </template>

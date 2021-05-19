@@ -30,6 +30,7 @@
         padding: 16px 40px;
         border-radius: 8px;
         background: #22272e;
+        border: 1px solid #373e47;
     }
 
     h2 {
