@@ -23,6 +23,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+    .v-application--wrap {
+        background: #1e2228;
+    }
 </style>

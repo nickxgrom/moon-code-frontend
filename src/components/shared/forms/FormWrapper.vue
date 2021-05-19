@@ -18,19 +18,18 @@
 
 <style scoped>
     .wrapper {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
         text-align: center;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .form {
-        width: 30%;
+        width: 500px;
         margin: 0 auto;
-        padding: 16px 30px;
+        padding: 16px 40px;
         border-radius: 8px;
-        background: #343a40;
+        background: #22272e;
     }
 
     h2 {
