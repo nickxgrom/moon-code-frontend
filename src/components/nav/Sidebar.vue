@@ -1,7 +1,11 @@
 <template>
-
-    <v-sheet rounded="lg">
-        <v-list color="transparent">
+    <v-sheet
+        rounded="lg"
+        color="mc-dark-lighten">
+        <v-list
+            color="transparent"
+            class="pa-0"
+        >
             <v-list-item
                 v-for="item in items"
                 :key="item.link"
