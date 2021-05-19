@@ -10,15 +10,23 @@
             :label="field.label"
             :type="field.type"
             :rules="field.rules"
+            ref="form-input"
         >
 
         </v-text-field>
 
-        <v-btn color="teal lighten-1">Регистрация</v-btn>
+        <v-btn
+            color="mc-accept"
+            @click="submit"
+            depressed
+        >
+            Зарегистрироваться
+        </v-btn>
         <br/>или<br/>
         <v-btn
             color="light-blue darken-3"
             @click="$router.push('/signin')"
+            depressed
         >
             Вход
         </v-btn>
@@ -37,41 +45,46 @@
                 fields: [
                     {
                         label: "Фамилия",
+                        name: "firstName",
                         value: "",
                         placeholder: "Введите фамилию",
                         type: "text",
                         rules: [
                             v => !!v || "Поле не должно быть пустым",
                             v => /.{2,}/.test(v) || "Поле должно содержать не менее двух букв",
-
-
                             v => /^[A-ZА-ЯЁ]/.test(v) || "Фамилия должна начинаться с заглавной буквы",
                             v => /[a-zа-яё-]$/.test(v) || "Поле может содержать только строчные буквы и дефис",
-
                         ],
                     },
                     {
                         label: "Имя",
+                        name: "secondName",
                         value: "",
                         placeholder: "Введите имя",
                         type: "text",
                         rules: [
                             v => !!v || "Поле не должно быть пустым",
-                            v => /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/.test(v) || "LKJ"
+                            v => /.{2,}/.test(v) || "Поле должно содержать не менее двух букв",
+                            v => /^[A-ZА-ЯЁ]/.test(v) || "Фамилия должна начинаться с заглавной буквы",
+                            v => /[a-zа-яё-]$/.test(v) || "Поле может содержать только строчные буквы и дефис",
                         ],
                     },
                     {
                         label: "Отчество",
+                        name: "patronymic",
                         value: "",
                         placeholder: "Введите отчество",
                         type: "text",
                         rules: [
                             v => !!v || "Поле не должно быть пустым",
-                            v => /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/.test(v) || "LKJ"
+                            v => /.{2,}/.test(v) || "Поле должно содержать не менее двух букв",
+                            v => /^[A-ZА-ЯЁ]/.test(v) || "Фамилия должна начинаться с заглавной буквы",
+                            v => /[a-zа-яё-]$/.test(v) || "Поле может содержать только строчные буквы и дефис",
                         ],
                     },
                     {
                         label: "Логин",
+                        name: "username",
                         value: "",
                         placeholder: "Введите логин",
                         type: "text",
@@ -82,12 +95,14 @@
                     },
                     {
                         label: "Пароль",
+                        name: "password",
                         value: "",
                         placeholder: "Введите пароль",
                         type: "password",
                         rules: [
                             v => !!v || "Поле не должно быть пустым",
-                            v => !/\s/.test(v) || "Пароль не должен содержать пробелы"
+                            v => !/\s/.test(v) || "Пароль не должен содержать пробелы",
+                            v => /.{4,}/.test(v) || "Пароль должен содержать минимум 4 символа",
                         ],
                     },
                     {
@@ -101,6 +116,34 @@
                         ],
                     },
                 ],
+            }
+        },
+        methods: {
+            async submit() {
+                if (this.validate()) {
+                    let res = await this.$store.dispatch('signup', this.registrationData())
+                    console.log(`dev:`)
+                    console.log(res.json())
+                } else {
+                    console.log(`dev: Validation failed`)
+                }
+
+            },
+            validate() {
+                let valid = true
+                this.$refs["form-input"].forEach(field => {
+                    valid = valid && field.valid
+                })
+                return valid
+            },
+            registrationData() {
+                let obj = {}
+                this.fields.forEach(field => {
+                    if (field.name) {
+                        obj[field.name] = field.value
+                    }
+                })
+                return obj
             }
         },
     }

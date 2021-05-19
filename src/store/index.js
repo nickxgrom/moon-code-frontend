@@ -4,23 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        lang: "ru",
-        isDarkTheme: false,
-    },
-    mutations: {
-        setLang(state, lang) {
-            state.lang = lang
-        },
-        setDarkTheme(state, isDarkTheme) {
-            state.isDarkTheme = isDarkTheme
+    actions: {
+        async signup({ commit }, payload) {
+            return await fetch("http://localhost:3000/api/auth/registration", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
         }
-    },
-    getters: {
-        lang: s => s.lang,
-        isDarkTheme: s => s.isDarkTheme
-    },
-    modules: {
-
     }
 })
