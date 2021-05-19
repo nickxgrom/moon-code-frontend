@@ -6,12 +6,6 @@ const routes = [
         component: () => import('../../views/Home.vue'),
     },
     {
-        path: "/login",
-        name: "login",
-        meta: {layout: 'empty'},
-        component: () => import('../../views/Login.vue'),
-    },
-    {
         path: "/signup",
         name: "signup",
         meta: {layout: 'no'},
@@ -22,30 +16,6 @@ const routes = [
         name: "signin",
         meta: {layout: 'no'},
         component: () => import('../../views/Signin.vue'),
-    },
-    {
-        path: "/favorites",
-        name: "favorites",
-        meta: {layout: 'main', title: 'Закладки'},
-        component: () => import('../../views/MyFavoritesTasks.vue'),
-    },
-    {
-        path: "/parcels",
-        name: "parcels",
-        meta: {layout: 'main', title: 'Мои посылки'},
-        component: () => import('../../views/MyParcels.vue'),
-    },
-    {
-        path: "/my-tasks",
-        name: "my-tasks",
-        meta: {layout: 'main', title: 'Мои задачи'},
-        component: () => import('../../views/MyTasks.vue'),
-    },
-    {
-        path: "/profile",
-        name: "profile",
-        meta: {layout: 'main', title: 'Профиль'},
-        component: () => import('../../views/Profile.vue'),
     },
 ]
 

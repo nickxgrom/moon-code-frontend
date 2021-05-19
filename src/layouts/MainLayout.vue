@@ -2,9 +2,7 @@
     <v-app id="inspire">
         <v-app-bar
             app
-            class="indigo lighten-4"
             flat
-            height="250"
         >
             <Header/>
         </v-app-bar>
