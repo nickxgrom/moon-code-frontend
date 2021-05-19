@@ -1,5 +1,5 @@
 <template>
-    <v-app id="inspire" color="dark">
+    <v-app id="inspire">
         <v-app-bar
             app
             flat

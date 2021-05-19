@@ -12,14 +12,16 @@
                 class="action-button"
             >
                 <v-btn
-                    color="light-blue darken-3"
+                    color="white"
                     @click="$router.push('/signin')"
+                    text
                 >
                     Вход
                 </v-btn>
                 <v-btn
-                    color="teal lighten-1"
+                    color="mc-accept"
                     @click="$router.push('/signup')"
+                    depressed
                 >
                     Регистрация
                 </v-btn>
@@ -54,5 +56,7 @@ export default {
 </script>
 
 <style scoped>
-
+    h2 {
+        color: #cdd9e5;
+    }
 </style>

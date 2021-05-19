@@ -14,6 +14,7 @@ const opts = {
                 'mc-dark': '#1e2228',
                 'mc-dark-lighten': '#22272e',
                 'mc-text': '#cdd9e5',
+                'mc-accept': '#347d39',
             }
         },
         dark: true
