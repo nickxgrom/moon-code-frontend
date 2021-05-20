@@ -45,7 +45,7 @@
 <script>
 import FormWrapper from "./FormWrapper.vue";
 export default {
-    name: "SignupForm",
+    name: "SignInForm",
     components: {
         FormWrapper,
     },
@@ -90,12 +90,16 @@ export default {
                 await this.$store.dispatch('signin', this.registrationData())
                     .then((res) => {
                         res.json().then(r => {
+                            if (r.token) {
+                                window.localStorage.setItem('token', r.token)
+                            }
                             this.notificationMsg = {
                                 message: r.message || `Добро пожаловать, ${this.fields[0].value}`,
                                 visible: true,
                                 type: res.status === 200 ? "success" : "error"
                             }
                         })
+                        setTimeout(() => {this.$router.push('/')}, 2000)
                     })
             } else {
                 this.notificationMsg = {

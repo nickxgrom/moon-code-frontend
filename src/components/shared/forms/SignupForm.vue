@@ -133,11 +133,6 @@
                 ],
             }
         },
-        created() {
-            this.fields.forEach(field => {
-                field.value = "Lorem"
-            })
-        },
         methods: {
             async submit() {
                 this.notificationMsg.visible = false
@@ -152,6 +147,7 @@
                                     type: res.status === 200 ? "success" : "error"
                                 }
                             })
+                            setTimeout(() => {this.$router.push('/signin')}, 2000)
                         })
                 } else {
                     this.notificationMsg = {
