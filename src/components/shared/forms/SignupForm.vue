@@ -2,6 +2,13 @@
     <form-wrapper
         title="Добро пожаловать в MoonCode"
     >
+        <v-alert
+            v-if="notificationMsg.visible"
+            :type="notificationMsg.type"
+            dismissible
+        >
+            {{ notificationMsg.message }}
+        </v-alert>
         <v-text-field
             v-for="field in fields"
             v-model="field.value"
@@ -45,6 +52,11 @@
         },
         data() {
             return {
+                notificationMsg: {
+                    message: "",
+                    type: "",
+                    visible: false,
+                },
                 fields: [
                     {
                         label: "Фамилия",
@@ -121,14 +133,33 @@
                 ],
             }
         },
+        created() {
+            this.fields.forEach(field => {
+                field.value = "Lorem"
+            })
+        },
         methods: {
             async submit() {
+                this.notificationMsg.visible = false
+
                 if (this.validate()) {
-                    let res = await this.$store.dispatch('signup', this.registrationData())
-                    console.log(`dev:`)
-                    console.log(res.json())
+                    await this.$store.dispatch('signup', this.registrationData())
+                        .then((res) => {
+                            res.json().then(r => {
+                                this.notificationMsg = {
+                                    message: r.message,
+                                    visible: true,
+                                    type: res.status === 200 ? "success" : "error"
+                                }
+                            })
+                        })
                 } else {
-                    console.log(`dev: Validation failed`)
+                    this.notificationMsg = {
+                        message: 'Необходимо заполнить все поля',
+                        type: 'error',
+                        visible: true
+                    }
+
                 }
 
             },
