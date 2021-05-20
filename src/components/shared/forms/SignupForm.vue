@@ -17,7 +17,7 @@
             :label="field.label"
             :type="field.type"
             :rules="field.rules"
-            ref="form-input"
+            ref="signup-form-input"
         >
 
         </v-text-field>
@@ -159,13 +159,11 @@
                         type: 'error',
                         visible: true
                     }
-
                 }
-
             },
             validate() {
                 let valid = true
-                this.$refs["form-input"].forEach(field => {
+                this.$refs["signup-form-input"].forEach(field => {
                     valid = valid && field.valid
                 })
                 return valid
