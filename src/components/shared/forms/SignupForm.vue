@@ -147,7 +147,11 @@
                                     type: res.status === 200 ? "success" : "error"
                                 }
                             })
-                            setTimeout(() => {this.$router.push('/signin')}, 2000)
+                            if (res.status === 200) {
+                                setTimeout(() => {
+                                    this.$router.push('/signin')
+                                }, 2000)
+                            }
                         })
                 } else {
                     this.notificationMsg = {
