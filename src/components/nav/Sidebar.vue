@@ -1,10 +1,12 @@
 <template>
     <v-sheet
-        rounded="lg"
-        color="mc-dark-lighten">
+        color="mc-dark-lighten"
+        class="sidebar"
+    >
         <v-list
             color="transparent"
             class="pa-0"
+            flat
         >
             <v-list-item
                 v-for="item in items"
@@ -21,19 +23,6 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-
-            <v-divider class="my-2"></v-divider>
-
-            <v-list-item
-                link
-                color="grey lighten-4"
-            >
-                <v-list-item-content>
-                    <v-list-item-title>
-                        Refresh
-                    </v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
         </v-list>
     </v-sheet>
 </template>
@@ -44,14 +33,16 @@ export default {
     data: () => ({
         items: [
             {title: 'Все задачи', icon: 'mdi-clipboard-list-outline', link: '/'},
-            {title: 'Мои задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
+            {title: 'Загруженные задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
+            {title: 'Выполненные', icon: 'mdi-view-list', link: '/parcels'},
             {title: 'Закладки', icon: 'mdi-playlist-star', link: '/favorites'},
-            {title: 'Мои посылки', icon: 'mdi-view-list', link: '/parcels'},
         ],
     })
 }
 </script>
 
 <style scoped>
-
+    .sidebar {
+        height: 100%;
+    }
 </style>

@@ -9,16 +9,14 @@
         </v-app-bar>
 
         <v-main app class="mc-dark">
-            <v-container class="ma-0">
-                <v-row>
-                    <v-col cols="2" class="pa-0">
+            <v-container id="main-container" class="ma-0 pa-0">
+                <v-row class="fill-height ma-0">
+                    <v-col cols="2" class="pa-0" >
                         <Sidebar/>
                     </v-col>
                     <v-col>
                         <v-sheet
-                            min-height="70vh"
-                            rounded="lg"
-                            class="p-5"
+                            class="pa-6"
                             color="mc-dark"
                         >
                             <h3>{{ title }}</h3>
@@ -48,4 +46,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+    #main-container {
+        height: 100%;
+    }
+</style>
