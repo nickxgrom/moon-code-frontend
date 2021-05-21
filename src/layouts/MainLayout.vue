@@ -19,7 +19,6 @@
                             class="pa-6"
                             color="mc-dark"
                         >
-                            <h3>{{ title }}</h3>
                             <router-view></router-view>
                         </v-sheet>
                     </v-col>

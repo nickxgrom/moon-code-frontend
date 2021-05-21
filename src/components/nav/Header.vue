@@ -12,18 +12,10 @@
                 class="action-button"
             >
                 <v-btn
-                    color="white"
-                    @click="$router.push('/signin')"
-                    text
-                >
-                    Вход
-                </v-btn>
-                <v-btn
                     color="mc-accept"
-                    @click="$router.push('/signup')"
-                    depressed
+                    @click="$router.push('/signin')"
                 >
-                    Регистрация
+                    Войти
                 </v-btn>
             </div>
             <div
