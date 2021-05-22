@@ -35,7 +35,7 @@ export default {
             {title: 'Все задачи', icon: 'mdi-clipboard-list-outline', link: '/'},
             {title: 'Загруженные задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
             {title: 'Выполненные', icon: 'mdi-view-list', link: '/parcels'},
-            {title: 'Закладки', icon: 'mdi-playlist-star', link: '/favorites'},
+            {title: 'Закладки', icon: 'mdi-bookmark', link: '/favorites'},
         ],
     })
 }
