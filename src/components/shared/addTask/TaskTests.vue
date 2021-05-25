@@ -18,7 +18,7 @@
                     icon
                     @click="tests.splice(tests.indexOf(test), 1)"
                 >
-                    <v-icon>mdi-minus</v-icon>
+                    <v-icon>mdi-minus-circle</v-icon>
                 </v-btn>
             </div>
             <v-card-subtitle class="pl-0">
@@ -77,13 +77,51 @@
                 <v-icon>mdi-plus-circle</v-icon>
                  Входные данные
             </v-btn>
+
+            <v-card-subtitle class="pl-0">
+                Выходные данные
+            </v-card-subtitle>
+
+            <div class="d-flex justify-space-between">
+                <div class="card__input-type">
+                    <v-select
+                        class="pa-0 mr-5"
+                        label="Тип"
+                        :items="['Boolean', 'String', 'Number', 'Any']"
+                        v-model="test.output.type"
+                    />
+                </div>
+                <div class="card__input-value">
+                    <v-text-field
+                        label="Значение"
+                        v-if="test.output.type!=='Boolean'"
+                        dense
+                        outlined
+                        v-model="test.output.value"
+                        :disabled="!test.output.type"
+                    />
+                    <v-select
+                        label="Значение"
+                        v-if="test.output.type==='Boolean'"
+                        :items="[true, false]"
+                        class="pa-0"
+                        v-model="test.output.value"
+                        :disabled="!test.output.type"
+                        outlined
+                        dense
+                    />
+                </div>
+            </div>
         </v-card>
 
         <v-btn
+            class="mb-5"
             @click="addTest"
+            color="primary"
             :disabled="tests.length>4"
         >
-            Добавить тест
+            <v-icon>mdi-plus-circle</v-icon>
+             Добавить тест
         </v-btn>
         <br>
 
@@ -114,6 +152,7 @@
                             }
                         ],
                         output: {
+                            type: "",
                             value: ""
                         }
                     }
@@ -126,9 +165,10 @@
                     items: [
                         { type: "", value: "" },
                     ],
-                    output: { value: "", }
+                    output: {type: "", value: "", }
                 })
-            }
+            },
+
         }
     }
 </script>
