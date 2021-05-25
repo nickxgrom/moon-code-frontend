@@ -19,10 +19,8 @@
                     </v-stepper-step>
                 </v-stepper-header>
                 <v-stepper-items>
-                    <v-stepper-content step="1">
-                        <form-wrapper
-                            title="Добавить новую задачу"
-                        >
+                    <v-stepper-content step="1" class="pa-0">
+                        <form-wrapper>
                             <v-text-field
                                 :label="taskName.label"
                                 :placeholder="taskName.placeholder"
@@ -52,18 +50,10 @@
                         </form-wrapper>
                     </v-stepper-content>
 
-                    <v-stepper-content step="2">
-                        <form-wrapper
-                            title="Тесты для задачи"
-                        >
-                            <div class="ma-8">Coming soon</div>
-                            <v-btn @click="tab = 1">Назад</v-btn>
-                            <v-btn
-                                color="success"
-                            >
-                                Добавить
-                            </v-btn>
-                        </form-wrapper>
+                    <v-stepper-content step="2" class="pa-0">
+                        <task-test
+                            @goBack="tab = 1"
+                        />
                     </v-stepper-content>
                 </v-stepper-items>
             </v-stepper>
@@ -73,11 +63,13 @@
 
 <script>
     import FormWrapper from "./shared/forms/FormWrapper.vue";
+    import TaskTest from "./shared/TaskTests.vue";
 
     export default {
         name: "NewTask",
         components: {
             FormWrapper,
+            TaskTest,
         },
         data() {
             return {
