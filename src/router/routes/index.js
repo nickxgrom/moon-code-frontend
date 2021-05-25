@@ -12,6 +12,12 @@ const routes = [
         component: () => import('../../views/NewTask.vue'),
     },
     {
+        name: "task-view",
+        path: "/task-view",
+        meta: {layout: 'main', title: 'Задача'},
+        component: () => import('../../views/Task.vue'),
+    },
+    {
         path: "/signup",
         name: "signup",
         meta: {layout: 'no'},
