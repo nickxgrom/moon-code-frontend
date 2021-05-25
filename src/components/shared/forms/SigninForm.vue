@@ -1,6 +1,7 @@
 <template>
     <form-wrapper
         :title="`MoonCode. Вход`"
+        outlined
     >
         <v-alert
             v-if="notificationMsg.visible"
