@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import AddNewTask from "../components/shared/taskTest/AddNewTask.vue"
+    import AddNewTask from "../components/shared/addTask/AddNewTask.vue"
     export default {
         name: "NewTask",
         components: {

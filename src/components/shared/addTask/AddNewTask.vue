@@ -16,7 +16,7 @@
         </v-stepper-header>
         <v-stepper-items>
             <v-stepper-content step="1" class="pa-0">
-                <form-wrapper>
+                <div class="stepper__first-tab">
                     <v-text-field
                         :label="taskName.label"
                         :placeholder="taskName.placeholder"
@@ -31,7 +31,7 @@
                         :rules="taskDesc.rules"
                     />
                     <v-btn
-                        @click="$emit('closeOverlay')"
+                        @click="$router.push('/')"
                         color="error"
                     >
                         Отмена
@@ -43,7 +43,7 @@
                     >
                         Далее
                     </v-btn>
-                </form-wrapper>
+                </div>
             </v-stepper-content>
 
             <v-stepper-content step="2" class="pa-0">
@@ -112,5 +112,10 @@
     .wrapper {
         top: 0;
         transform: none;
+    }
+
+    .stepper__first-tab {
+        margin: 20px;
+        width: 50%;
     }
 </style>

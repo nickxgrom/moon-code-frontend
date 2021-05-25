@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import TaskList from "../components/shared/taskTest/TaskList.vue";
+    import TaskList from "../components/shared/TaskList.vue";
     export default {
         name: "Home",
         components: {
