@@ -2,7 +2,10 @@
     <v-sheet
         color="mc-dark"
     >
-        <h2 class="mb-5">{{ title }}</h2>
+        <div class="d-flex justify-space-between">
+            <h2 class="mb-5">{{ title }}</h2>
+            <slot/>
+        </div>
         <v-card
             v-for="item in items"
             :key="item.id"
