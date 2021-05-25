@@ -6,26 +6,20 @@
         >
             <v-btn
                 color="success"
-                @click="addTaskVisible=true"
+                @click="$router.push('/new-task')"
             >
                 Добавить задачу
             </v-btn>
         </task-list>
-        <new-task
-            v-if="addTaskVisible"
-            @closeOverlay="addTaskVisible=false"
-        />
     </div>
 </template>
 
 <script>
-    import TaskList from "../components/shared/TaskList.vue";
-    import NewTask from "../components/NewTask.vue";
+    import TaskList from "../components/shared/taskTest/TaskList.vue";
     export default {
         name: "Home",
         components: {
             TaskList,
-            NewTask,
         },
         data() {
             return {

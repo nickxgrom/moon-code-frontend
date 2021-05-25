@@ -6,6 +6,12 @@ const routes = [
         component: () => import('../../views/Home.vue'),
     },
     {
+        name: "new-task",
+        path: "/new-task",
+        meta: {layout: 'main', title: 'Новая задача'},
+        component: () => import('../../views/NewTask.vue'),
+    },
+    {
         path: "/signup",
         name: "signup",
         meta: {layout: 'no'},

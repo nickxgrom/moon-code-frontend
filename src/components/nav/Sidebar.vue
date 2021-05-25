@@ -23,6 +23,21 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list-item
+                link
+                to="/new-task">
+                <v-list-item-icon>
+                    <v-icon>mdi-plus-circle</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                    <v-list-item-title>
+                        Добавить задачу
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
         </v-list>
     </v-sheet>
 </template>
