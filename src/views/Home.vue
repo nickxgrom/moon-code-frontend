@@ -1,28 +1,42 @@
 <template>
-    <div >
-       <h1>Список всех задач</h1>
-        <v-btn
-            @click="addTaskVisible = true"
-        >
-            Добавить задачу
-        </v-btn>
-        <new-task
-            v-if="addTaskVisible"
-            @closeOverlay="addTaskVisible=false"
-        />
-    </div>
+    <task-list
+        title="Все задачи"
+        :items="items"
+    />
 </template>
 
 <script>
-    import NewTask from "../components/NewTask.vue";
+    import TaskList from "../components/shared/TaskList.vue";
     export default {
         name: "Home",
         components: {
-            NewTask,
+            TaskList,
         },
         data() {
             return {
-                addTaskVisible: false
+                items: [
+                    {
+                        id: 3,
+                        title: "Task 1",
+                        rating: "0",
+                        inBookmark: false,
+                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
+                    },
+                    {
+                        id: 34,
+                        title: "Task 2",
+                        rating: "-3",
+                        inBookmark: true,
+                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
+                    },
+                    {
+                        id: 15,
+                        title: "Task 3",
+                        rating: "5",
+                        inBookmark: false,
+                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
+                    },
+                ],
             }
         },
     }
