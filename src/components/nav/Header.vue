@@ -1,14 +1,12 @@
 <template>
     <v-row>
-        <v-col cols="3">
-
-        </v-col>
+        <v-col cols="3"></v-col>
         <v-col>
             <h2 class="text-center align-center">MoonCode</h2>
         </v-col>
         <v-col cols="3" class="action-button d-flex justify-end">
             <div
-                v-if="checkLogin()"
+                v-if="!checkLogin()"
                 class="action-button"
             >
                 <v-btn
@@ -18,33 +16,58 @@
                     Войти
                 </v-btn>
             </div>
-            <div
-                class="profile-button"
-                v-if="!checkLogin()"
-            >
-                Username etc.
-            </div>
+
+            <v-menu v-else offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                        icon
+                        v-bind="attrs"
+                        v-on="on"
+                    >
+                        <v-icon>mdi-account</v-icon>
+                    </v-btn>
+                </template>
+                <v-list>
+                    <v-list-item>
+                        <v-list-item-icon>
+                            <v-icon>mdi-account</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>
+                            Профиль
+                        </v-list-item-title>
+                    </v-list-item>
+                    <v-list-item @click="logout">
+                        <v-list-item-icon>
+                            <v-icon>mdi-logout-variant</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>
+                            Выйти
+                        </v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
         </v-col>
     </v-row>
 </template>
 
 <script>
-export default {
-    name: "Header",
-    data() {
-        return {
+    export default {
+        name: "Header",
+        data() {
+            return {
 
-        }
-    },
-    mounted() {
-
-    },
-    methods: {
-        checkLogin() {
-            return true;
+            }
+        },
+        methods: {
+            checkLogin() {
+                return localStorage.getItem('token')
+            },
+            logout() {
+                localStorage.removeItem('token')
+                this.$router.go()
+            }
         }
     }
-}
 </script>
 
 <style scoped>
