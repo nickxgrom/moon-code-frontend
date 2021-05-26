@@ -41,7 +41,7 @@
                 </div>
                 <div class="card__input-value">
                     <v-text-field
-                        :label="`Значение (${item.type || 'Выерите тип'})`"
+                        :label="`Значение (${item.type || 'Выберите тип'})`"
                         v-if="item.type!=='Boolean'"
                         dense
                         outlined
