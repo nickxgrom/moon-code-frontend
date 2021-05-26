@@ -4,8 +4,9 @@ import router from "./router/index"
 import vuetify from "./plugins/vuetify";
 import dateFilter from "./filters/date.filter.js";
 import store from "./store/index.js"
+import VueMask from 'v-mask'
 
-
+Vue.use(VueMask)
 Vue.filter('date', dateFilter)
 
 new Vue({
