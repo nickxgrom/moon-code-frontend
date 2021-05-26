@@ -41,11 +41,12 @@
                 </div>
                 <div class="card__input-value">
                     <v-text-field
-                        label="Значение"
+                        :label="`Значение (${item.type || 'Выерите тип'})`"
                         v-if="item.type!=='Boolean'"
                         dense
                         outlined
                         v-model="item.value"
+                        v-mask="getMask(item)"
                         :disabled="!item.type"
                     />
                     <v-select
@@ -93,11 +94,12 @@
                 </div>
                 <div class="card__input-value">
                     <v-text-field
-                        label="Значение"
+                        :label="`Значение (${test.output.type || 'Выберите тип'})`"
                         v-if="test.output.type!=='Boolean'"
                         dense
                         outlined
                         v-model="test.output.value"
+                        v-mask="getMask(test.output)"
                         :disabled="!test.output.type"
                     />
                     <v-select
@@ -135,7 +137,14 @@
 </template>
 
 <script>
-
+    import createNumberMask  from 'text-mask-addons/dist/createNumberMask';
+    const currencyMask = createNumberMask ({
+        prefix: '',
+        allowDecimal: true,
+        thousandsSeparatorSymbol: ' ',
+        allowNegative: true,
+        integerLimit: 15,
+    });
     export default {
         name: "TaskTest",
         components: {
@@ -143,6 +152,7 @@
         },
         data() {
             return {
+                numberMask: currencyMask,
                 tests: [
                     {
                         items: [
@@ -168,7 +178,11 @@
                     output: {type: "", value: "", }
                 })
             },
-
+            getMask(item) {
+                return item.type === 'Number' ?
+                        this.numberMask
+                        :'X'.repeat(255)
+            }
         }
     }
 </script>
