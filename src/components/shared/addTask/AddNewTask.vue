@@ -13,8 +13,14 @@
             >
                 Тесты
             </v-stepper-step>
+            <v-stepper-step
+                step="3"
+                :complete="tab > 3"
+            >
+                Почти готово
+            </v-stepper-step>
         </v-stepper-header>
-        <v-stepper-items>
+        <v-stepper-items class="pa-4">
             <v-stepper-content step="1" class="pa-0">
                 <div class="stepper__first-tab">
                     <v-text-field
@@ -51,8 +57,26 @@
                 <v-btn @click="tab = 1">Назад</v-btn>
                 <v-btn
                     color="success"
+                    @click="tab = 3"
                 >
                     Далее
+                </v-btn>
+            </v-stepper-content>
+
+            <v-stepper-content step="3" class="pa-0">
+                <v-card-title>
+                    Проверьте задачу перед добавлением
+                </v-card-title>
+
+                <task-preview
+                    readonly
+                />
+
+                <v-btn @click="tab = 2">Назад</v-btn>
+                <v-btn
+                    color="success"
+                >
+                    Добавить задачу
                 </v-btn>
             </v-stepper-content>
         </v-stepper-items>
@@ -60,14 +84,14 @@
 </template>
 
 <script>
-    import FormWrapper from "../forms/FormWrapper.vue";
     import TaskTest from "./TaskTests.vue";
+    import TaskPreview from "../TaskPreview.vue";
 
     export default {
         name: "NewTask",
         components: {
-            FormWrapper,
             TaskTest,
+            TaskPreview
         },
         data() {
             return {

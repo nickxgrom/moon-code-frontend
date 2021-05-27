@@ -133,14 +133,6 @@
             <v-icon>mdi-plus-circle</v-icon>
              Добавить тест
         </v-btn>
-        <br>
-
-        <v-btn
-            v-if="readonly"
-            color="success"
-        >
-            Начать решать
-        </v-btn>
     </div>
 </template>
 
