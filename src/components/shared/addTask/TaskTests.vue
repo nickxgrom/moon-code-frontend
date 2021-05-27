@@ -1,5 +1,5 @@
 <template>
-    <div class="pa-8 pt-2">
+    <div>
         <v-card
             color="mc-dark"
             class="pa-4 mb-8"

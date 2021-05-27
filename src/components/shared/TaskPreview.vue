@@ -1,8 +1,8 @@
 <template>
     <div>
-        <v-card color="mc-dark-lighten" flat>
+        <v-card color="mc-dark-lighten" flat class="pa-8">
             <div class="d-flex justify-space-between">
-                <v-card-title>
+                <v-card-title class="pa-0 mb-8">
                     TaskName here
                 </v-card-title>
                 <v-card-subtitle class="ma-0 pa-0">
@@ -15,9 +15,12 @@
                     </v-btn>
                 </v-card-subtitle>
             </div>
-            <v-card-text class="pr-10" >
+
+            <p class="mb-8 mr-10">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim iure pariatur quis voluptatum. Debitis porro quisquam sunt. Amet at, corporis deleniti deserunt eveniet iste maiores pariatur perspiciatis repellendus tenetur, vero?
-            </v-card-text>
+            </p>
+
+            <h3 class="mb-3">Тесты</h3>
 
             <task-tests
                 readonly
