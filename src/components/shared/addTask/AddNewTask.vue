@@ -47,9 +47,13 @@
             </v-stepper-content>
 
             <v-stepper-content step="2" class="pa-0">
-                <task-test
-                    @goBack="tab = 1"
-                />
+                <task-test/>
+                <v-btn @click="tab = 1">Назад</v-btn>
+                <v-btn
+                    color="success"
+                >
+                    Далее
+                </v-btn>
             </v-stepper-content>
         </v-stepper-items>
     </v-stepper>
