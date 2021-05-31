@@ -1,5 +1,5 @@
 <template>
-    <div class="pa-8 pt-2">
+    <div>
         <v-card
             color="mc-dark"
             class="pa-4 mb-8"
@@ -14,7 +14,7 @@
                     Test#{{ tests.indexOf(test)+1 }}
                 </v-card-title>
                 <v-btn
-                    v-if="tests.length>1"
+                    v-if="tests.length>1 && !readonly"
                     icon
                     @click="tests.splice(tests.indexOf(test), 1)"
                 >
@@ -37,6 +37,7 @@
                         label="Тип"
                         :items="['Boolean', 'String', 'Number', 'Any']"
                         v-model="item.type"
+                        :readonly="readonly"
                     />
                 </div>
                 <div class="card__input-value">
@@ -48,6 +49,7 @@
                         v-model="item.value"
                         v-mask="getMask(item)"
                         :disabled="!item.type"
+                        :readonly="readonly"
                     />
                     <v-select
                         label="Значение"
@@ -58,11 +60,12 @@
                         :disabled="!item.type"
                         outlined
                         dense
+                        :readonly="readonly"
                     />
                 </div>
 
                 <v-btn
-                    v-if="test.items.length>1"
+                    v-if="test.items.length>1 && !readonly"
                     @click="test.items.splice(test.items.indexOf(item), 1)"
                     icon
                 >
@@ -70,6 +73,7 @@
                 </v-btn>
             </div>
             <v-btn
+                v-if="!readonly"
                 class="mb-5"
                 @click="test.items.push({type: '', value: ''})"
                 color="primary"
@@ -90,6 +94,7 @@
                         label="Тип"
                         :items="['Boolean', 'String', 'Number', 'Any']"
                         v-model="test.output.type"
+                        :readonly="readonly"
                     />
                 </div>
                 <div class="card__input-value">
@@ -101,6 +106,7 @@
                         v-model="test.output.value"
                         v-mask="getMask(test.output)"
                         :disabled="!test.output.type"
+                        :readonly="readonly"
                     />
                     <v-select
                         label="Значение"
@@ -111,12 +117,14 @@
                         :disabled="!test.output.type"
                         outlined
                         dense
+                        :readonly="readonly"
                     />
                 </div>
             </div>
         </v-card>
 
         <v-btn
+            v-if="!readonly"
             class="mb-5"
             @click="addTest"
             color="primary"
@@ -124,14 +132,6 @@
         >
             <v-icon>mdi-plus-circle</v-icon>
              Добавить тест
-        </v-btn>
-        <br>
-
-        <v-btn @click="$emit('goBack')">Назад</v-btn>
-        <v-btn
-            color="success"
-        >
-            Далее
         </v-btn>
     </div>
 </template>
@@ -150,23 +150,22 @@
         components: {
 
         },
+        props: {
+            readonly: Boolean,
+            items: Array,
+        },
         data() {
             return {
                 numberMask: currencyMask,
-                tests: [
-                    {
-                        items: [
-                            {
-                                type: "",
-                                value: ""
-                            }
-                        ],
-                        output: {
-                            type: "",
-                            value: ""
-                        }
-                    }
-                ],
+                tests: [],
+            }
+        },
+        //TODO: rework with store
+        mounted() {
+            if (this.items) {
+                this.tests = this.items
+            } else {
+                this.addTest()
             }
         },
         methods: {

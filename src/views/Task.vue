@@ -1,5 +1,12 @@
 <template>
-    <task-preview/>
+    <div>
+        <task-preview/>
+        <v-btn
+            color="success"
+        >
+            Начать решать
+        </v-btn>
+    </div>
 </template>
 
 <script>
