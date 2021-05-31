@@ -22,7 +22,7 @@
                         'error--text': item.rating < 0,
                         'success--text': item.rating > 0
                     }">
-                        {{ item.rating }}
+                        {{ item.rating || 'Unrated' }}
                     </span>
                     <v-btn icon>
                         <v-icon>mdi-menu-up</v-icon>
@@ -30,7 +30,7 @@
                 </v-card-subtitle>
             </div>
             <v-card-text>
-                {{ item.description }}
+                {{ item.text }}
             </v-card-text>
             <v-card-actions>
                 <v-btn icon>

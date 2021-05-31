@@ -24,31 +24,12 @@
         data() {
             return {
                 addTaskVisible: false,
-                items: [
-                    {
-                        id: 3,
-                        title: "Task 1",
-                        rating: "0",
-                        inBookmark: false,
-                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
-                    },
-                    {
-                        id: 34,
-                        title: "Task 2",
-                        rating: "-3",
-                        inBookmark: true,
-                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
-                    },
-                    {
-                        id: 15,
-                        title: "Task 3",
-                        rating: "5",
-                        inBookmark: false,
-                        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, vitae?",
-                    },
-                ],
+                items: [],
             }
         },
+        async mounted() {
+            this.items = await this.$store.dispatch('getTaskList')
+        }
     }
 </script>
 
