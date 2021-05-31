@@ -23,8 +23,10 @@
             <h3 class="mb-3">Тесты</h3>
 
             <task-tests
+                v-if="testItems"
                 readonly
-                :items="testItems"
+                :tests="testItems"
+
             />
 
         </v-card>
@@ -38,45 +40,14 @@
         components: {
             TaskTests
         },
+        async mounted() {
+            this.testItems = await this.$store.dispatch('getAllTestsByTaskId', { id: this.$route.params.id })
+        },
         data() {
             return {
-                // TODO: this is placeholder
-                testItems: [
-                    {
-                        items: [
-                            {
-                                type: "Boolean",
-                                value: true
-                            },
-                            {
-                                type: "String",
-                                value: "Lorem impsum dolor sit amet"
-                            },
-                        ],
-                        output: {
-                            type: "Number",
-                            value: "123.12",
-                        }
-                    },
-                    {
-                        items: [
-                            {
-                                type: "Boolean",
-                                value: true
-                            },
-                            {
-                                type: "String",
-                                value: "Lorem impsum dolor sit amet"
-                            },
-                        ],
-                        output: {
-                            type: "Number",
-                            value: "123.12",
-                        }
-                    },
-                ]
+                testItems: null
             }
-        }
+        },
     }
 </script>
 

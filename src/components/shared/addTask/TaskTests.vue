@@ -26,38 +26,38 @@
             </v-card-subtitle>
             <div
                 class="d-flex justify-space-between"
-                v-for="item in test.items"
+                v-for="testInput in test.inputs"
             >
                 <div class="py-3 mr-5">
-                    {{ test.items.indexOf(item)+1 }}.
+                    {{ test.inputs.indexOf(testInput)+1 }}.
                 </div>
                 <div class="card__input-type">
                     <v-select
                         class="pa-0 mr-5"
                         label="Тип"
                         :items="['Boolean', 'String', 'Number', 'Any']"
-                        v-model="item.type"
+                        v-model="testInput.type"
                         :readonly="readonly"
                     />
                 </div>
                 <div class="card__input-value">
                     <v-text-field
-                        :label="`Значение (${item.type || 'Выберите тип'})`"
-                        v-if="item.type!=='Boolean'"
+                        :label="`Значение (${testInput.type || 'Выберите тип'})`"
+                        v-if="testInput.type!=='Boolean'"
                         dense
                         outlined
-                        v-model="item.value"
-                        v-mask="getMask(item)"
-                        :disabled="!item.type"
+                        v-model="testInput.value"
+                        v-mask="getMask(testInput)"
+                        :disabled="!testInput.type"
                         :readonly="readonly"
                     />
                     <v-select
                         label="Значение"
-                        v-if="item.type==='Boolean'"
+                        v-if="testInput.type==='Boolean'"
                         :items="[true, false]"
                         class="pa-0"
-                        v-model="item.value"
-                        :disabled="!item.type"
+                        v-model="testInput.value"
+                        :disabled="!testInput.type"
                         outlined
                         dense
                         :readonly="readonly"
@@ -65,8 +65,8 @@
                 </div>
 
                 <v-btn
-                    v-if="test.items.length>1 && !readonly"
-                    @click="test.items.splice(test.items.indexOf(item), 1)"
+                    v-if="test.inputs.length>1 && !readonly"
+                    @click="test.inputs.splice(test.inputs.indexOf(testInput), 1)"
                     icon
                 >
                     <v-icon>mdi-minus-circle</v-icon>
@@ -75,9 +75,9 @@
             <v-btn
                 v-if="!readonly"
                 class="mb-5"
-                @click="test.items.push({type: '', value: ''})"
+                @click="test.inputs.push({type: '', value: ''})"
                 color="primary"
-                :disabled="test.items.length>10"
+                :disabled="test.inputs.length>10"
             >
                 <v-icon>mdi-plus-circle</v-icon>
                  Входные данные
@@ -93,28 +93,28 @@
                         class="pa-0 mr-5"
                         label="Тип"
                         :items="['Boolean', 'String', 'Number', 'Any']"
-                        v-model="test.output.type"
+                        v-model="test.outputType"
                         :readonly="readonly"
                     />
                 </div>
                 <div class="card__input-value">
                     <v-text-field
-                        :label="`Значение (${test.output.type || 'Выберите тип'})`"
-                        v-if="test.output.type!=='Boolean'"
+                        :label="`Значение (${test.outputType || 'Выберите тип'})`"
+                        v-if="test.outputType!=='Boolean'"
                         dense
                         outlined
-                        v-model="test.output.value"
-                        v-mask="getMask(test.output)"
-                        :disabled="!test.output.type"
+                        v-model="test.outputValue"
+                        v-mask="getMask(test.outputType)"
+                        :disabled="!test.outputType"
                         :readonly="readonly"
                     />
                     <v-select
                         label="Значение"
-                        v-if="test.output.type==='Boolean'"
+                        v-if="test.outputType==='Boolean'"
                         :items="[true, false]"
                         class="pa-0"
-                        v-model="test.output.value"
-                        :disabled="!test.output.type"
+                        v-model="test.outputValue"
+                        :disabled="!test.outputType"
                         outlined
                         dense
                         :readonly="readonly"
@@ -152,20 +152,11 @@
         },
         props: {
             readonly: Boolean,
-            items: Array,
+            tests: Array,
         },
         data() {
             return {
                 numberMask: currencyMask,
-                tests: [],
-            }
-        },
-        //TODO: rework with store
-        mounted() {
-            if (this.items) {
-                this.tests = this.items
-            } else {
-                this.addTest()
             }
         },
         methods: {
@@ -177,8 +168,8 @@
                     output: {type: "", value: "", }
                 })
             },
-            getMask(item) {
-                return item.type === 'Number' ?
+            getMask(type) {
+                return type === 'Number' ?
                         this.numberMask
                         :'X'.repeat(255)
             }

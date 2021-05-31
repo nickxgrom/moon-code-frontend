@@ -17,5 +17,26 @@ export default {
                 .then(res => res.tasks)
             return result
         },
+        getBookmarks() {
+
+        },
+        getUploadTasks() {
+
+        },
+        getDoneTasks() {
+
+        },
+        getTaskById() {
+
+        },
+        createTask() {
+
+        },
+        updateTask() {
+
+        },
+        deleteTask() {
+
+        },
     }
 }

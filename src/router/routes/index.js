@@ -13,7 +13,7 @@ const routes = [
     },
     {
         name: "task-view",
-        path: "/task-view",
+        path: "/task-view/:id",
         meta: {layout: 'main', title: 'Задача'},
         component: () => import('../../views/Task.vue'),
     },
