@@ -77,7 +77,6 @@
                 class="mb-5"
                 @click="test.inputs.push({type: '', value: ''})"
                 color="primary"
-                :disabled="test.inputs.length>10"
             >
                 <v-icon>mdi-plus-circle</v-icon>
                  Входные данные
@@ -128,7 +127,6 @@
             class="mb-5"
             @click="addTest"
             color="primary"
-            :disabled="tests.length>4"
         >
             <v-icon>mdi-plus-circle</v-icon>
              Добавить тест
@@ -152,20 +150,31 @@
         },
         props: {
             readonly: Boolean,
-            tests: Array,
+            items: {
+                type: Array,
+            }
+        },
+        mounted() {
+            if (!this.items) {
+                this.addTest()
+            } else {
+                this.tests = this.items
+            }
         },
         data() {
             return {
                 numberMask: currencyMask,
+                tests: [],
             }
         },
         methods: {
             addTest() {
                 this.tests.push({
-                    items: [
+                    inputs: [
                         { type: "", value: "" },
                     ],
-                    output: {type: "", value: "", }
+                    outputType: "",
+                    outputValue: "",
                 })
             },
             getMask(type) {

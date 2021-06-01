@@ -70,6 +70,8 @@
 
                 <task-preview
                     readonly
+                    :title="taskName.value"
+                    :description="taskDesc.value"
                 />
 
                 <v-btn @click="tab = 2">Назад</v-btn>
