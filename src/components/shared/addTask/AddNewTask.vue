@@ -53,14 +53,11 @@
             </v-stepper-content>
 
             <v-stepper-content step="2" class="pa-0">
-                <task-test/>
-                <v-btn @click="tab = 1">Назад</v-btn>
-                <v-btn
-                    color="success"
-                    @click="tab = 3"
-                >
-                    Далее
-                </v-btn>
+                <task-test
+                    @goNext="getTests"
+                    @goBack="tab=1"
+                />
+
             </v-stepper-content>
 
             <v-stepper-content step="3" class="pa-0">
@@ -69,12 +66,14 @@
                 </v-card-title>
 
                 <task-preview
+                    v-if="taskPreviewVisible"
                     readonly
                     :title="taskName.value"
                     :description="taskDesc.value"
+                    :prop-tests="emptyTests"
                 />
 
-                <v-btn @click="tab = 2">Назад</v-btn>
+                <v-btn @click="goBack">Назад</v-btn>
                 <v-btn
                     color="success"
                 >
@@ -98,6 +97,16 @@
         data() {
             return {
                 tab: 1,
+                taskPreviewVisible: false,
+                emptyTests: [
+                    {
+                        inputs: [
+                            { type: '', value: '' },
+                        ],
+                        outputType: '',
+                        outputValue: '',
+                    }
+                ],
                 taskName: {
                     label: "Название",
                     value: "",
@@ -119,6 +128,17 @@
                         v => !!v || "Поле не должно быть пустым",
                     ]
                 },
+            }
+        },
+        methods: {
+            getTests(data) {
+                this.emptyTests = data
+                this.taskPreviewVisible = true
+                this.tab = 3
+            },
+            goBack() {
+                this.tab = 2
+                this.taskPreviewVisible = false
             }
         },
         computed: {

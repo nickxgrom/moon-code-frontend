@@ -122,15 +122,27 @@
             </div>
         </v-card>
 
-        <v-btn
+        <div
             v-if="!readonly"
-            class="mb-5"
-            @click="addTest"
-            color="primary"
         >
-            <v-icon>mdi-plus-circle</v-icon>
-             Добавить тест
-        </v-btn>
+            <v-btn
+                class="mb-5"
+                @click="addTest"
+                color="primary"
+            >
+                <v-icon>mdi-plus-circle</v-icon>
+                 Добавить тест
+            </v-btn>
+            <div></div>
+            <v-btn @click="$emit('goBack')">Назад</v-btn>
+            <v-btn
+                color="success"
+                @click="$emit('goNext', tests)"
+            >
+                Далее
+            </v-btn>
+        </div>
+
     </div>
 </template>
 

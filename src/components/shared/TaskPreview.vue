@@ -42,19 +42,11 @@
         props: {
             title: String,
             description: String,
+            propTests: Array
         },
         async mounted() {
-            // TODO: replace this array to array with data from previous step
             this.testItems = this.$route.params.id ? await this.$store.dispatch('getAllTestsByTaskId', { id: this.$route.params.id })
-                : [
-                    {
-                        inputs: [
-                            { type: "", value: "" },
-                        ],
-                        outputType: "",
-                        outputValue: "",
-                    }
-                ]
+                : this.propTests
         },
         data() {
             return {
