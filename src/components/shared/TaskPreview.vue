@@ -3,7 +3,7 @@
         <v-card color="mc-dark-lighten" flat class="pa-8">
             <div class="d-flex justify-space-between">
                 <v-card-title class="pa-0 mb-8">
-                    {{ title }}
+                    {{ task.title }}
                 </v-card-title>
                 <v-card-subtitle class="ma-0 pa-0">
                     <v-btn icon>
@@ -17,7 +17,7 @@
             </div>
 
             <p class="mb-8 mr-10">
-                {{ description }}
+                {{ task.text }}
             </p>
 
             <h3 class="mb-3">Тесты</h3>
@@ -47,10 +47,18 @@
         async mounted() {
             this.testItems = this.$route.params.id ? await this.$store.dispatch('getAllTestsByTaskId', { id: this.$route.params.id })
                 : this.propTests
+
+            if (this.$route.params.id) {
+                this.task = await this.$store.dispatch('getTaskById', { id: this.$route.params.id  } )
+            }
         },
         data() {
             return {
-                testItems: null
+                testItems: null,
+                task: {
+                    title: '',
+                    text: '',
+                },
             }
         },
     }

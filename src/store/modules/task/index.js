@@ -26,8 +26,13 @@ export default {
         getDoneTasks() {
 
         },
-        getTaskById() {
-
+        async getTaskById({commit}, {id}) {
+            return await fetch(`${BASE_URL}/task?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            }).then( response => response.json())
         },
         createTask() {
 
