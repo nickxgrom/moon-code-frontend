@@ -5,15 +5,9 @@
                 <v-card-title class="pa-0 mb-8">
                     {{ task.title }}
                 </v-card-title>
-                <v-card-subtitle class="ma-0 pa-0">
-                    <v-btn icon>
-                        <v-icon>mdi-menu-down</v-icon>
-                    </v-btn>
-                    <span>0</span>
-                    <v-btn icon>
-                        <v-icon>mdi-menu-up</v-icon>
-                    </v-btn>
-                </v-card-subtitle>
+                <rating-bar
+                    :rating="task.rating"
+                />
             </div>
 
             <p class="mb-8 mr-10">
@@ -33,11 +27,13 @@
 </template>
 
 <script>
+    import RatingBar from "./RatingBar.vue";
     import TaskTests from "./addTask/TaskTests.vue";
     export default {
         name: "TaskPreview",
         components: {
-            TaskTests
+            TaskTests,
+            RatingBar,
         },
         props: {
             title: String,
@@ -58,6 +54,7 @@
                 task: {
                     title: '',
                     text: '',
+                    rating: {},
                 },
             }
         },

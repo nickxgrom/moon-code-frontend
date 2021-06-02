@@ -15,20 +15,9 @@
         >
             <div class="d-flex justify-space-between">
                 <v-card-title class="ma-0 pa-0">{{ item.title }}</v-card-title>
-                <v-card-subtitle class="ma-0 pa-0">
-                    <v-btn icon>
-                        <v-icon>mdi-menu-down</v-icon>
-                    </v-btn>
-                    <span :class="{
-                        'error--text': item.rating < 0,
-                        'success--text': item.rating > 0
-                    }">
-                        {{ item.rating || 'Unrated' }}
-                    </span>
-                    <v-btn icon>
-                        <v-icon>mdi-menu-up</v-icon>
-                    </v-btn>
-                </v-card-subtitle>
+                <rating-bar
+                    :rating="item.rating"
+                />
             </div>
             <v-card-text>
                 {{ item.text }}
@@ -45,12 +34,16 @@
 </template>
 
 <script>
+    import RatingBar from "./RatingBar.vue";
     export default {
         name: "ViewWrapper",
         props: {
             title: String,
             items: Array,
-        }
+        },
+        components: {
+            RatingBar,
+        },
     }
 </script>
 
