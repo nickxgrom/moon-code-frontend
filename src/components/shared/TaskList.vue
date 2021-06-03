@@ -11,7 +11,6 @@
             :key="item.id"
             color="mc-dark-lighten"
             class="mb-3 pa-3"
-            @click="$router.push(`task-view/${item.id}`)"
         >
             <div class="d-flex justify-space-between">
                 <v-card-title class="ma-0 pa-0">{{ item.title }}</v-card-title>
@@ -27,6 +26,12 @@
                     <v-icon>
                         {{ item.inBookmark ? `mdi-bookmark` : `mdi-bookmark-off` }}
                     </v-icon>
+                </v-btn>
+                <v-btn
+                    @click="$router.push(`task-view/${item.id}`)"
+                    color="success"
+                >
+                    Подробнее
                 </v-btn>
             </v-card-actions>
         </v-card>
