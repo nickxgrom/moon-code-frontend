@@ -3,15 +3,16 @@
         <v-card color="mc-dark-lighten" flat class="pa-8">
             <div class="d-flex justify-space-between">
                 <v-card-title class="pa-0 mb-8">
-                    {{ task.title }}
+                    {{ task.title || title }}
                 </v-card-title>
                 <rating-bar
+                    v-if="$route.name !== 'new-task'"
                     :rating="task.rating"
                 />
             </div>
 
             <p class="mb-8 mr-10">
-                {{ task.text }}
+                {{ task.text || description }}
             </p>
 
             <h3 class="mb-3">Тесты</h3>
@@ -45,7 +46,7 @@
                 : this.propTests
 
             if (this.$route.params.id) {
-                this.task = await this.$store.dispatch('getTaskById', { id: this.$route.params.id  } )
+                this.task = (await this.$store.dispatch('getTaskById', { id: this.$route.params.id  } ))
             }
         },
         data() {
