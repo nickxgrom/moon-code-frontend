@@ -1,13 +1,15 @@
 const BASE_URL = 'http://localhost:3000/api/'
 export default {
     state: {
-
+        taskList: [],
     },
     mutations: {
-
+        setTaskList(state, taskList) {
+            state.taskList = taskList
+        }
     },
     actions: {
-        async getTaskList() {
+        async getTaskList({ commit }) {
             let result = await fetch(`${BASE_URL}/tasks`, {
                 method: 'GET',
                 headers: {
@@ -15,7 +17,7 @@ export default {
                 },
             }).then( response => response.json())
                 .then(res => res.tasks)
-            return result
+            commit('setTaskList', result)
         },
         getBookmarks() {
 

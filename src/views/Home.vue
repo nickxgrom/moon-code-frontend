@@ -21,14 +21,13 @@
         components: {
             TaskList,
         },
-        data() {
-            return {
-                addTaskVisible: false,
-                items: [],
+        computed: {
+            items() {
+                return this.$store.state.task.taskList
             }
         },
         async mounted() {
-            this.items = await this.$store.dispatch('getTaskList')
+            await this.$store.dispatch('getTaskList')
         }
     }
 </script>
