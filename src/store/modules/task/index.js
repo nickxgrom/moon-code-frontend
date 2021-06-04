@@ -45,13 +45,13 @@ export default {
         deleteTask() {
 
         },
-        async upRating({ commit }, { taskId, value }) {
-            return await fetch(`${BASE_URL}/task/rating?taskId=${taskId}&value=${value}`, {
+        async changeRating({ dispatch, commit }, { taskId, value }) {
+            await fetch(`${BASE_URL}/task/rating?taskId=${taskId}&value=${value}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-            }).then(response => response.json())
+            }).then( async () => await dispatch('getTaskList'))
         },
         downRating() {},
 

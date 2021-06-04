@@ -1,17 +1,17 @@
 <template>
     <v-card-subtitle class="ma-0 pa-0">
         <v-btn icon
-            @click="downRating"
+            @click="changeRating(rating.userVatedValue === 'NEGATIVE' ? 'NOTHING' : 'NEGATIVE')"
             :color="rating.userVatedValue === 'NEGATIVE' ? 'error' : 'white'"
         >
-            <v-icon>mdi-menu-down</v-icon>
+            <v-icon size="36">mdi-menu-down</v-icon>
         </v-btn>
-        <span>{{ rating.ratingNumber }}</span>
+        <span class="mx-4 text-h6">{{ rating.ratingNumber }}</span>
         <v-btn icon
-               @click="upRating('POSITIVE')"
+               @click="changeRating(rating.userVatedValue === 'POSITIVE' ? 'NOTHING' : 'POSITIVE')"
                :color="rating.userVatedValue === 'POSITIVE' ? 'primary' : 'white'"
         >
-            <v-icon>mdi-menu-up</v-icon>
+            <v-icon size="36">mdi-menu-up</v-icon>
         </v-btn>
     </v-card-subtitle>
 </template>
@@ -21,13 +21,11 @@ export default {
     name: "RatingBar",
     props: {
         rating: Object,
+        taskId: Number,
     },
     methods: {
-        async downRating() {
-
-        },
-        async upRating() {
-
+        async changeRating(value) {
+            await this.$store.dispatch('changeRating', { taskId: this.taskId, value } )
         },
     }
 }

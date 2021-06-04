@@ -16,6 +16,7 @@
                 <v-card-title class="ma-0 pa-0">{{ item.title }}</v-card-title>
                 <rating-bar
                     :rating="item.rating"
+                    :task-id="item.id"
                 />
             </div>
             <v-card-text>
