@@ -6,8 +6,9 @@
                     {{ task.title || title }}
                 </v-card-title>
                 <rating-bar
-                    v-if="$route.name !== 'new-task'"
+                    v-if="$route.name !== 'new-task' && !!task.rating"
                     :rating="task.rating"
+                    :task-id="task.id"
                 />
             </div>
 
@@ -41,22 +42,22 @@
             description: String,
             propTests: Array
         },
+        computed: {
+            task() {
+                return this.$store.state.task.currentTask
+            }
+        },
         async mounted() {
             this.testItems = this.$route.params.id ? await this.$store.dispatch('getAllTestsByTaskId', { id: this.$route.params.id })
                 : this.propTests
 
             if (this.$route.params.id) {
-                this.task = (await this.$store.dispatch('getTaskById', { id: this.$route.params.id  } ))
+                await this.$store.dispatch('getTaskById', { id: this.$route.params.id  } )
             }
         },
         data() {
             return {
                 testItems: null,
-                task: {
-                    title: '',
-                    text: '',
-                    rating: {},
-                },
             }
         },
     }

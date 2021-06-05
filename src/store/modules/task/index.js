@@ -2,10 +2,14 @@ const BASE_URL = 'http://localhost:3000/api/'
 export default {
     state: {
         taskList: [],
+        currentTask: {},
     },
     mutations: {
         setTaskList(state, taskList) {
             state.taskList = taskList
+        },
+        setCurrentTask(state, task) {
+            state.currentTask = task
         }
     },
     actions: {
@@ -35,6 +39,9 @@ export default {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
             }).then( response => response.json())
+                .then(res => {
+                    commit('setCurrentTask', res)
+                })
         },
         createTask() {
 
@@ -51,7 +58,10 @@ export default {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-            }).then( async () => await dispatch('getTaskList'))
+            }).then( async () => {
+                await dispatch('getTaskList')
+                await dispatch('getTaskById', {id: taskId})
+            })
         },
         downRating() {},
 
