@@ -2,6 +2,7 @@ const BASE_URL = 'http://localhost:3000/api'
 export default {
     state: {
         taskList: [],
+        bookmarks: [],
         currentTask: {},
         notification: {
             message: "",
@@ -12,6 +13,9 @@ export default {
     mutations: {
         setTaskList(state, taskList) {
             state.taskList = taskList
+        },
+        setBookmarkList(state, bookmarks) {
+            state.bookmarks = bookmarks
         },
         setCurrentTask(state, task) {
             state.currentTask = task
@@ -36,8 +40,15 @@ export default {
                 .then(res => res.tasks)
             commit('setTaskList', result)
         },
-        getBookmarks() {
-
+        async getBookmarks({ commit }) {
+            let result = await fetch(`${BASE_URL}/tasks?favorites=true`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            }).then( response => response.json())
+                .then(res => res.tasks)
+            commit('setBookmarkList', result)
         },
         getUploadTasks() {
 

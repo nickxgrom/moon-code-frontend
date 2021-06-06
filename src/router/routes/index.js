@@ -29,6 +29,12 @@ const routes = [
         meta: {layout: 'no'},
         component: () => import('../../views/Signin.vue'),
     },
+    {
+        path: "/favorites",
+        name: "favorites",
+        meta: {layout: 'main', title: 'Закладки'},
+        component: () => import('../../views/Favorites.vue'),
+    },
 ]
 
 export default routes
