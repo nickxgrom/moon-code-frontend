@@ -76,6 +76,7 @@
                 <v-btn @click="goBack">Назад</v-btn>
                 <v-btn
                     color="success"
+                    @click="createNewTask"
                 >
                     Добавить задачу
                 </v-btn>
@@ -131,6 +132,15 @@
             }
         },
         methods: {
+            async createNewTask() {
+                await this.$store.dispatch('createTask', {
+                    task: {
+                        title: this.taskName.value,
+                        text: this.taskDesc.value
+                    },
+                    tests: this.emptyTests,
+                })
+            },
             getTests(data) {
                 this.emptyTests = data
                 this.taskPreviewVisible = true
