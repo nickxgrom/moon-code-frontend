@@ -19,6 +19,13 @@
                             class="pa-6"
                             color="mc-dark"
                         >
+                            <v-alert
+                                v-if="notification.visible"
+                                :type="notification.type"
+                                transition="scale-transition"
+                            >
+                                {{ notification.message }}
+                            </v-alert>
                             <router-view></router-view>
                         </v-sheet>
                     </v-col>
@@ -40,6 +47,9 @@ export default {
     computed: {
         title() {
             return this.$route.meta.title
+        },
+        notification() {
+            return this.$store.state.task.notification || {}
         }
     }
 }
