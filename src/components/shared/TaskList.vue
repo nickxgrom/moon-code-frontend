@@ -6,6 +6,16 @@
             <h2 class="mb-5">{{ title }}</h2>
             <slot/>
         </div>
+        <div v-if="!items">
+            К сожалению, задач нет или вы не авторизованы
+            <v-btn
+                plain
+                color="primary"
+                @click="$router.push('/signin')"
+            >
+                Вход
+            </v-btn>
+        </div>
         <v-card
             v-for="item in items"
             :key="item.id"
