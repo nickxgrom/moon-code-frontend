@@ -33,7 +33,7 @@
                             <v-icon>mdi-account</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>
-                            Профиль
+                            {{ this.$store.state.auth.username }}
                         </v-list-item-title>
                     </v-list-item>
                     <v-list-item @click="logout">
