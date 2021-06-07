@@ -2,7 +2,7 @@
     <v-sheet>
         <v-card color="mc-dark-lighten" flat>
             <v-card-title>{{ task.title }}</v-card-title>
-            <v-card-subtitle>Задача: {{ task.text }}</v-card-subtitle>
+            <v-card-subtitle><b>Условие задачи:</b> {{ task.text }}</v-card-subtitle>
 
             <v-card-actions>
                 <v-btn
@@ -55,7 +55,7 @@
 
             <div v-if="testBlockVisible" class="ma-4">
                 <v-card
-                    v-for="item in solution"
+                    v-for="item in solution.tests"
                     class="my-3"
                     flat
                     :key="item.id"
@@ -66,7 +66,17 @@
                         :indeterminate="loading"
                     ></v-progress-linear>
                     <div class="pa-4">
-                        Test#{{solution.indexOf(item)+1}}
+                        <div><b>Статус прохождения теста: </b>
+                            <span :class="{ 'green--text': item.isPassed, 'red--text': !item.isPassed }">{{ item.isPassed ? "Пройден" : "Не пройден" }}</span>
+                        </div>
+                        Test#{{ solution.tests.indexOf(item)+1 }}
+                        <div v-if="item.errorMessage" class="d-flex">
+                            <b>Ошибка: </b>
+                            <p class="ml-3">{{ item.errorMessage }}</p>
+                        </div>
+                        <div>
+                            <b>Ожидаемый результат: </b>{{ item.outputValue }}
+                        </div>
                     </div>
                 </v-card>
             </div>
@@ -121,6 +131,7 @@
             },
             async sendSolution() {
                 this.solution = await this.$store.dispatch('sendParcel', { id: this.$route.params.id, code: this.code })
+                console.log(this.solution)
                 this.getTestResult();
             },
             getTestResult() {
