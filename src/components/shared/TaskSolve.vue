@@ -1,8 +1,34 @@
 <template>
     <v-sheet>
         <v-card color="mc-dark-lighten" flat>
-            <v-card-title>Title here</v-card-title>
-            <v-card-subtitle>Задача: </v-card-subtitle>
+            <v-card-title>{{ task.title }}</v-card-title>
+            <v-card-subtitle>Задача: {{ task.text }}</v-card-subtitle>
+
+            <v-card-actions>
+                <v-btn
+                    color="purple lighten-2"
+                    text
+                    @click="testShow = !testShow"
+                >
+                    Тесты
+                </v-btn>
+                <v-btn
+                    icon
+                    @click="testShow = !testShow"
+                >
+                    <v-icon>{{ testShow ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                </v-btn>
+            </v-card-actions>
+
+            <v-expand-transition>
+                <div v-show="testShow">
+                    <task-tests
+                        v-if="tests"
+                        readonly
+                        :items="tests"
+                    />
+                </div>
+            </v-expand-transition>
 
             <v-card-title class="ml-1 mb-0">Решение:</v-card-title>
             <v-textarea
@@ -56,21 +82,34 @@
 </template>
 
 <script>
+    import TaskTests from "./addTask/TaskTests.vue";
     export default {
         name: "TaskSolve",
         props: {
             readonly: Boolean
+        },
+        components: {
+            TaskTests,
         },
         data() {
             return {
                 code: "",
                 testBlockVisible: false,
                 backToTasksBtnVisible: false,
+                tests: undefined,
+                testShow: false,
             }
+        },
+        async mounted() {
+            await this.$store.dispatch('getTaskById', { id: this.$route.params.id })
+            this.tests = await this.$store.dispatch('getAllTestsByTaskId', { id: this.$route.params.id })
         },
         computed: {
             getCode() {
                 return this.code
+            },
+            task() {
+                return this.$store.state.task.currentTask
             },
         },
         methods: {
