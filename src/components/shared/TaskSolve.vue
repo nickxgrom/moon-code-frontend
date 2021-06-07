@@ -55,18 +55,18 @@
 
             <div v-if="testBlockVisible" class="ma-4">
                 <v-card
-                    v-for="c in 5"
+                    v-for="item in solution"
                     class="my-3"
                     flat
-                    :key="c"
+                    :key="item.id"
                 >
                     <v-progress-linear
-                        color="primary"
+                        :color="item.isPassed ? 'success' : 'error'"
                         height="10"
-                        indeterminate
+                        :indeterminate="loading"
                     ></v-progress-linear>
                     <div class="pa-4">
-                        Task#{{c}}
+                        Test#{{solution.indexOf(item)+1}}
                     </div>
                 </v-card>
             </div>
@@ -98,6 +98,8 @@
                 backToTasksBtnVisible: false,
                 tests: undefined,
                 testShow: false,
+                solution: [],
+                loading: false,
             }
         },
         async mounted() {
@@ -118,7 +120,15 @@
                 this.code = `${this.code}    `
             },
             async sendSolution() {
+                this.solution = await this.$store.dispatch('sendParcel', { id: this.$route.params.id, code: this.code })
+                this.getTestResult();
+            },
+            getTestResult() {
                 this.testBlockVisible = true
+                this.loading = true
+                setTimeout(() => {
+                    this.loading = false
+                }, 1000)
             },
         }
     }
