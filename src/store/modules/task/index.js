@@ -100,7 +100,6 @@ export default {
             })
         },
         async createTest({commit}, {taskId, test}) {
-            console.log(taskId)
             await fetch(`${BASE_URL}/task/test?taskId=${taskId}`, {
                 method: 'POST',
                 headers: {
@@ -108,7 +107,7 @@ export default {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(test)
-            }).then(res => console.log(res))
+            })
         },
         async changeRating({ dispatch, commit }, { taskId, value }) {
             await fetch(`${BASE_URL}/task/rating?taskId=${taskId}&value=${value}`, {

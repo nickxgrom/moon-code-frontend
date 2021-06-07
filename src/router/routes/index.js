@@ -35,6 +35,12 @@ const routes = [
         meta: {layout: 'main', title: 'Закладки'},
         component: () => import('../../views/Favorites.vue'),
     },
+    {
+        path: "/solve/:id",
+        name: "task-solving",
+        meta: {layout: 'main', title: 'Решение задачи'},
+        component: () => import('../../views/TaskSolving.vue'),
+    },
 ]
 
 export default routes

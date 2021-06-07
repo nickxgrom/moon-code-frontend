@@ -3,6 +3,7 @@
         <task-preview/>
         <v-btn
             color="success"
+            @click="$router.push(`/solve/${$route.params.id}`)"
         >
             Начать решать
         </v-btn>
