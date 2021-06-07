@@ -14,7 +14,7 @@
         },
         computed: {
             items() {
-                return this.$store.state.task.taskList
+                return this.$store.state.task.bookmarks
             }
         },
         async mounted() {

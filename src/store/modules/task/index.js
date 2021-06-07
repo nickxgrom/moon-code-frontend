@@ -105,6 +105,7 @@ export default {
                 },
             }).then( async () => {
                 await dispatch('getTaskList')
+                await dispatch('getBookmarks')
                 await dispatch('getTaskById', {id: taskId})
             })
         },
