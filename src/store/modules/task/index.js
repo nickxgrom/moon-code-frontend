@@ -50,6 +50,19 @@ export default {
                 .then(res => res.tasks)
             commit('setBookmarkList', result)
         },
+        async changeBookmark({ dispatch, commit }, { taskId, value}) {
+            let result = await fetch(`${BASE_URL}/task/favorite?taskId=${taskId}&inBookmark=${value}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            }).then( async res => {
+                let resObj = await res.json()
+                dispatch('getBookmarks')
+                commit('showNotification', {obj: resObj, status: res.ok})
+                dispatch('getTaskList')
+            })
+        },
         getUploadTasks() {
 
         },

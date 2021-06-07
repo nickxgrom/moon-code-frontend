@@ -23,7 +23,10 @@
                 {{ item.text }}
             </v-card-text>
             <v-card-actions>
-                <v-btn icon>
+                <v-btn
+                    @click="changeBookmark(item)"
+                    icon
+                >
                     <v-icon>
                         {{ item.inBookmark ? `mdi-bookmark` : `mdi-bookmark-off` }}
                     </v-icon>
@@ -50,6 +53,11 @@
         components: {
             RatingBar,
         },
+        methods: {
+            async changeBookmark(item) {
+                await this.$store.dispatch('changeBookmark', { taskId: item.id, value: !item.inBookmark })
+            }
+        }
     }
 </script>
 
