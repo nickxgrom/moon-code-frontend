@@ -41,6 +41,18 @@ const routes = [
         meta: {layout: 'main', title: 'Решение задачи'},
         component: () => import('../../views/TaskSolving.vue'),
     },
+    {
+        path: "/task-overview/:id",
+        name: "overview",
+        meta: {layout: 'main', title: 'Все решения задачи'},
+        component: () => import('../../views/TaskOverview.vue'),
+    },
+    {
+        path: "/task-overview/",
+        name: "task-overview",
+        meta: {layout: 'main', title: 'Все решения задачи'},
+        component: () => import('../../views/Overview.vue'),
+    },
 ]
 
 export default routes
