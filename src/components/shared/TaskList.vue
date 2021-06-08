@@ -42,10 +42,18 @@
                     </v-icon>
                 </v-btn>
                 <v-btn
+                    v-if="type==='taskList'"
                     @click="$router.push(`task-view/${item.id}`)"
                     color="success"
                 >
                     Подробнее
+                </v-btn>
+                <v-btn
+                    v-else
+                    @click="$router.push(`task-overview/${item.id}`)"
+                    color="success"
+                >
+                    Посмотреть решения
                 </v-btn>
             </v-card-actions>
         </v-card>
@@ -59,6 +67,10 @@
         props: {
             title: String,
             items: Array,
+            type: {
+                type: String,
+                default: "taskList"
+            }
         },
         components: {
             RatingBar,

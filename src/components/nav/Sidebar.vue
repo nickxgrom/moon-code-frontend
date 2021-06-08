@@ -49,7 +49,7 @@ export default {
         items: [
             {title: 'Все задачи', icon: 'mdi-clipboard-list-outline', link: '/'},
             {title: 'Загруженные задачи', icon: 'mdi-playlist-edit', link: '/my-tasks'},
-            {title: 'Выполненные', icon: 'mdi-view-list', link: '/parcels'},
+            {title: 'Решенные', icon: 'mdi-view-list', link: '/task-overview'},
             {title: 'Закладки', icon: 'mdi-bookmark', link: '/favorites'},
         ],
     })
